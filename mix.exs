@@ -6,8 +6,8 @@ defmodule Array.Mixfile do
      version: "1.0.1",
      elixir: ">= 1.0.0",
      description: "An elixir wrapper library for Erlang's array.",
-     package: package,
-     deps: deps]
+     package: package(),
+     deps: deps()]
   end
 
   # Configuration for the OTP application
