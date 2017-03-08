@@ -323,6 +323,12 @@ defmodule Array do
   def to_orddict(%Array{content: c}),
     do: :array.to_orddict(c)
 
+  @doc """
+  Updates element at `index` with value of fun(array[index])
+  """
+  @spec update(t, non_neg_integer, (element -> any)) :: t
+  def update(t, index, fun), do: set t, index, fun.(get(t, index))
+
   def fetch(arr, idx) do
     {:ok, get(arr, idx)}
   end
