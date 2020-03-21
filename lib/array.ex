@@ -366,6 +366,15 @@ defimpl Enumerable, for: Array do
   def reduce(%Array{content: c}, acc, fun) do
     Enumerable.reduce(:array.to_list(c), acc, fun)
   end
+
+  def slice(array) do
+    size = Array.size(array)
+    {:ok, size, &slice(array, &1, &2)}
+  end
+
+  def slice(array, start_idx, amount) do
+    Enum.map(start_idx..(start_idx + amount - 1), &Array.get(array, &1))
+  end
 end
 
 defimpl Collectable, for: Array do

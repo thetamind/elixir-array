@@ -459,6 +459,14 @@ defmodule ArrayTest do
     assert 6 == sum
   end
 
+  test "Enumerable.slice" do
+    a = Array.from_list([1,2,3,4,5])
+    assert [1,2,3] == Enum.slice(a, 0, 3)
+    assert [3,4,5] == Enum.slice(a, 2, 3)
+    assert [3,4,5] == Enum.slice(a, 2, 9)
+    assert [4,5] == Enum.slice(a, -2, 5)
+  end
+
   test "Collectable.into" do
     a = Enum.into([1,2,3], Array.new())
     assert Array.is_array(a)
