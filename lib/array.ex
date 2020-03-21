@@ -275,7 +275,7 @@ defmodule Array do
 
   If `fun` is not a function, the call raises `ArgumentError`.
   """
-  @spec sparse_map(t, (element -> any)) :: t
+  @spec sparse_map(t, (index, element -> any)) :: t
   def sparse_map(%Array{content: c} = arr, fun),
     do: %Array{arr | content: :array.sparse_map(fun, c)}
 
